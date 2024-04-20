@@ -10,10 +10,10 @@
     <title>Update Task</title>
 </head>
     <body id="body" onload = "updateFillForm()"> 
-    <h2>Update Task</h2>
         <div id="inner-body">
             <div id="task">
-                <form id="task-form" action = "../index.php">
+                <h2>Update Task</h2>
+                <form id="task-form" action = "../index.html">
                     <div for="taskId-update"></div>
                     <label for="taskName-update">Task Name</label>
                     <input type="text" name="taskName-update" id="taskName-update" placeholder="Enter task name" >

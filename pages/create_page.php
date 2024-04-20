@@ -10,9 +10,10 @@
     <title>Create Task</title>
 </head>
     <body id="body"> 
-    <h2>Create Task</h2>
+    
         <div id="inner-body">
             <div id="task">
+                <h2>Create Task</h2>
                 <form id="task-form" action = "../index.php">
                     <label for="taskName">Task Name</label>
                     <input type="text" name="taskName" id="taskName" placeholder="Enter task name" required>

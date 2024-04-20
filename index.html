@@ -19,13 +19,29 @@
                     <input type="text" name="taskId" id="taskId" placeholder="Search...">
                     <button type="submit" onclick="readId();return false"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
-                <button type="button"  id="create-button" onclick="goCreate();"><i class="fa-solid fa-plus"></i></button>
+                <button type="button"  id="create-button" onclick="togglePopup();"><i class="fa-solid fa-plus"></i></button>
             </div>
         </div>
     </div>
     
 
     <!-- <button id="button" onsubmit="">Read All Task</button> -->
+    <div id="overlay-box">
+        <div id="task">
+            <h2>Create Task</h2>
+            <form id="task-form" >
+                <label for="taskName">Task Name</label>
+                <input type="text" name="taskName" id="taskName" placeholder="Enter task name" required>
+                <label for="taskDesc">Description</label>
+                <input type="text" name="taskDesc" id="taskDesc" placeholder="Enter Description" required>
+
+                <div id="button">
+                    <button type="submit" onclick="createTask()">Create</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
 
     <div id="inner-body">
         <!-- <div id="top-box">

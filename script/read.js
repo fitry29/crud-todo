@@ -4,6 +4,10 @@
 
 // btn.addEventListener("click", readAll);
 // import { goCreate, goHome, goUpdate } from "./page.js";
+function togglePopup() { 
+    const overlay = document.getElementById('overlay-box'); 
+    overlay.classList.toggle('show'); 
+} 
 
 async function readAll(){
     const res = await fetch("http://localhost/simpleAPI/api/readAll.php");
@@ -16,18 +20,11 @@ async function readAll(){
 
     let readAllDiv =  ``;
     
-    let varStatus = "";
+    let colors = "";
 
     for($i = 0; $i<taskData.data.length; $i++){
         console.log(taskData.data[$i]);
         let value = taskData.data[$i];
-
-        if(value.done == 1){
-            varStatus = "done";
-        }
-        else{
-            varStatus = "Not Done"
-        }
 
         // <tr id = "${value.taskId}" class="task-list" onclick="readListId(this.id);">
         //     <td id="myId" width="10%">${value.taskId}</td>
@@ -37,12 +34,19 @@ async function readAll(){
         //     <td width="15%">${varStatus}</td>
         //     <td width="15%"><input type="button" id = "delete-btn" value="Delete" onclick="deleteTask(${value.taskId})"></td>
         // </tr>
+        if(value.done == 1){
+            colors = "lightgreen";
+        }
+        else{
+            colors = "red";
+        }
 
         readAllDiv += `
         <div class="card" id = "${value.taskId}" ondblclick="readListId(this.id);">
             <div class="card-content1">
                 <div class = "task-name" id="myId" >#${value.taskId} ${value.taskName}</div>
                 <div id = "desc">${value.taskDesc}</div>
+                <div id = "stat">Status:   <i class="fa-solid fa-circle" style = "color: ${colors}"></i></div>
             </div>
             <div class="card-content2">
                 <div id="date">${value.createdDate}</div>
@@ -70,7 +74,7 @@ async function readListId(tId){
 
     const taskData1 = await res1.json();
     
-    alert(taskData1.data.taskId + " " + taskData1.data.taskName);
+    // alert(taskData1.data.taskId + " " + taskData1.data.taskName);
 
     let value = taskData1.data;
 
@@ -78,7 +82,7 @@ async function readListId(tId){
 
     sessionStorage.setItem("taskObj", JSON.stringify(taskObj));
 
-    alert(taskObj.id, taskObj.name);
+    // alert(taskObj.id, taskObj.name);
     
     window.location.href = "pages/update_page.php";
     // let id = document.getElementById("taskId-update");
@@ -209,7 +213,6 @@ async function createTask(){
 
     console.log(createdTask);
 
-    window.location.href = "../index.php";
 }
 
 // const updateForm  = document.getElementById('update-task-form');
@@ -242,7 +245,7 @@ async function updateTask(){
         done: stat
     }
 
-    alert(JSON.stringify(updateData));
+    // alert(JSON.stringify(updateData));
 
     const responseUpdate = await fetch(`http://localhost/simpleAPI/api/update.php`,{
         method: "PUT",
