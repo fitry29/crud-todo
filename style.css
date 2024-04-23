@@ -48,7 +48,7 @@ body{
 }
 #find-id input{
     font-size: medium;
-    background-color: rgba(255, 255, 255, 0.068);
+    background-color: transparent;
     border-width: 0px;
     border-bottom:1px black solid;
     outline: none;
@@ -93,12 +93,11 @@ body{
 .card{
     background-color: white;
     width: 20%;
-    height: 150px;
+    /* height: 250px; */
     border-radius: 15px;
     padding: 25px 30px;
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;
     justify-content: space-between;
     transition: all 0.5s;
 }
@@ -187,12 +186,26 @@ body{
 #task{
     background-color: white;
     width: 30%;
-    padding: 25px 30px;
+    padding: 20px 30px;
     border-radius: 15px;
     animation: fadeInUp 0.5s ease-out forwards; 
 }
 
+#task #title-box{
+   display: flex;
+   justify-content: space-between;
+   align-items: start;
+}
+
+#task #title-box i{
+    transition: all 0.5s;
+}
+#task #title-box i:hover{
+    transform: scale(1.1);
+}
+
 #task h2{
+    /* padding-bottom: 10px; */
     font-weight: bold;
     letter-spacing: 2px;
 }
@@ -243,4 +256,34 @@ body{
 #check-status input{
     width: 15px;
     height: 15px;
+}
+
+@media only screen and (max-width: 700px) {
+    #inner-body{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card{
+        width: 70%;
+    }
+
+    #top-box{
+        align-items: end;
+        justify-content: end;
+    }
+
+    #find-id{
+        display: none;
+    }
+
+    #task{
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .card{
+        width: auto;
+    }
 }
